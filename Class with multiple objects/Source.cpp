@@ -5,6 +5,7 @@
 //Header files standard libraries and classes
 #include <iostream>
 #include <string>
+#include <io.h>
 #include "mediaItems.h"
 
 //Gloabal Variables
@@ -20,8 +21,7 @@ void print_menu();
 //Main Function
 int main()
 {
-	//interActive = isatty(fileno(stdin));
-	//interActive = isatty(STDIN_FILENO);
+	bool interActive = _isatty(_fileno(stdin));
 	
 	//Create an array of 20 media items for filling with data
 	//useing the global pointer we can use the item specified with 
