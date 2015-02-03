@@ -32,11 +32,17 @@ int main()
 
 	std::string menu_in;
 
-	print_menu();
+	if (interActive)
+	{
+		print_menu();
+	}
+
+	//print_menu();
+
 	while (!done)
 	{
 		std::cout << std::endl << "Menu [" << *itemNum_ptr << "]: ";
-		std::getline (std::cin,menu_in);
+		std::cin >> menu_in;
 		process_menu_in(menu_in[0]);
 	}
 	std::cout << std::endl << "Goodbye" << std::endl;
@@ -51,6 +57,7 @@ void process_menu_in(char inchar)
 	// Print all objects
 	case '*':
 	{
+		std::cout << std::endl << std::endl << "==== All Items ====" << std::endl;
 		int count = 0;
 		while (count <= 19)
 		{

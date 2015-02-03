@@ -58,27 +58,27 @@ void mediaItems::toCout()
 			std::cout << "       Pages : " << pages << std::endl;
 		}
 		
-		//display if the item is in print; check for default then prints the value
-		if (in_print_def == true);
-		else if (in_print_def == false)
-		{
-			if (in_print == true)
-			{
-				std::cout << "Print Status : " << "in print" << std::endl;
-			}
-			else if (in_print == false)
-			{
-				std::cout << "Print Status : " << "not in print" << std::endl;
-			}
-		}
-
 		//display price if set
 		if (price == 0.00);
 		else if (price != 0.00)
 		{
 			std::cout << "       Price : $" << price << std::endl;
 		}
-		
+
+		//display if the item is in print; check for default then prints the value
+		if (in_print_def == true);
+		else if (in_print_def == false)
+		{
+			if (in_print == true)
+			{
+				std::cout << "Print Status : " << "True" << std::endl;
+			}
+			else if (in_print == false)
+			{
+				std::cout << "Print Status : " << "False" << std::endl;
+			}
+		}
+
 		//display publication year if set; check if the value is default
 		if (pub_year_def == true);
 		else if (pub_year_def == false)
