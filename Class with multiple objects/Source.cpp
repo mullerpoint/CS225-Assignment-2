@@ -58,7 +58,7 @@ void process_menu_in(char inchar)
 	// Print all objects
 	case '*':
 	{
-		std::cout << std::endl << std::endl << "==== All Items ====" << std::endl;
+		std::cout << std::endl << std::endl << "==== All Items Start ====" << std::endl;
 		int count = 0;
 		while (count <= 19)
 		{
@@ -66,6 +66,7 @@ void process_menu_in(char inchar)
 			Items_ptr[count].toCout();
 			count++;
 		}
+		std::cout << std::endl << "===== All Items End =====" << std::endl;
 	}
 	break;
 	
