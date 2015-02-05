@@ -86,7 +86,7 @@ void mediaItems::toCout()
 			std::cout << "    Pub Year : " << pub_year << std::endl;
 		}
 		
-		std::cout << std::endl;
+		/*std::cout << std::endl;*/
 		
 		//std::cout << "has data test: " << hasData << std::endl;
 	}

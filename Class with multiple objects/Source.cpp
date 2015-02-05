@@ -80,6 +80,7 @@ void process_menu_in(char inchar)
 		{
 			*itemNum_ptr = 19;
 		}
+		std::cout << std::endl;
 	}
 	break;
 
@@ -94,6 +95,7 @@ void process_menu_in(char inchar)
 		{
 			*itemNum_ptr = 0;
 		}
+		std::cout << std::endl;
 	}
 	break;
 
@@ -116,6 +118,7 @@ void process_menu_in(char inchar)
 
 		//clear buffer for next input
 		std::cin.ignore(10000, '\n');
+		std::cout << std::endl;
 	}
 	break;
 
@@ -215,7 +218,7 @@ void process_menu_in(char inchar)
 //Print Menu Function
 void print_menu()
 {
-	std::cout 
+	std::cout << std::endl
 		<< "* - Display all media items data" << std::endl
 		<< "+//- increment // decrement the selecte item w/in the Array" << std::endl
 		<< "# - set the selected media item" << std::endl
@@ -228,5 +231,5 @@ void print_menu()
 		<< "V - set item Value//Price" << std::endl
 		<< "Y - set item Publication Year" << std::endl
 		<< "M - Print this Menu" << std::endl 
-		<< "Q - Quit this program" << std::endl;
+		<< "Q - Quit this program" << std::endl << std::endl;
 }
