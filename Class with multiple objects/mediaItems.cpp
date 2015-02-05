@@ -62,7 +62,7 @@ void mediaItems::toCout()
 		if (price == 0.00);
 		else if (price != 0.00)
 		{
-			std::cout << "       Price : $" << price << std::endl;
+			std::cout << "       Price : $" << std::fixed << price << std::endl;
 		}
 
 		//display if the item is in print; check for default then prints the value
@@ -86,7 +86,7 @@ void mediaItems::toCout()
 			std::cout << "    Pub Year : " << pub_year << std::endl;
 		}
 		
-		std::cout << std::endl << std::endl;
+		std::cout << std::endl;
 		
 		//std::cout << "has data test: " << hasData << std::endl;
 	}

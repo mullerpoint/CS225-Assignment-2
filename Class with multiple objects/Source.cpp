@@ -5,7 +5,7 @@
 //Header files standard libraries and classes
 #include <iostream>
 #include <string>
-#include <io.h>
+#include <locale>
 #include "mediaItems.h"
 
 //Gloabal Variables
@@ -13,6 +13,7 @@ bool done = false;
 mediaItems* Items_ptr;
 int* itemNum_ptr;
 bool interActive = true;
+std::locale* locale;
 
 //Function Prototypes
 void process_menu_in(char);
@@ -20,9 +21,7 @@ void print_menu();
 
 //Main Function
 int main()
-{
-	bool interActive = _isatty(_fileno(stdin));
-	
+{	
 	//Create an array of 20 media items for filling with data
 	//useing the global pointer we can use the item specified with 
 	mediaItems Items[20];
@@ -30,14 +29,13 @@ int main()
 	int itemNum = 0;
 	itemNum_ptr = &itemNum;
 
+	std::locale mylocal("");
+	locale = &mylocal;
+	std::cout.imbue(*locale);
+	
+	
 	std::string menu_in;
-
-	if (interActive)
-	{
-		print_menu();
-	}
-
-	//print_menu();
+	print_menu();
 
 	while (!done)
 	{
@@ -52,6 +50,9 @@ int main()
 //Process Menu Function
 void process_menu_in(char inchar)
 {
+	std::cout.imbue(*locale);
+	std::cout.precision(2);
+
 	switch (toupper(inchar))
 	{
 	// Print all objects
