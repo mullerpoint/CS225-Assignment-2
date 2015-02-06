@@ -1,6 +1,9 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Gary Muller
 // Spring 2015
 // CS 225 Assignment 1
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Header files standard libraries and classes
 #include <iostream>
@@ -10,18 +13,22 @@
 
 //Gloabal Variables
 bool done = false;
+
 mediaItems* Items_ptr;
 int* itemNum_ptr;
-bool interActive = true;
+
 std::locale* locale;
+
 
 //Function Prototypes
 void process_menu_in(char);
 void print_menu();
 
+
+
 //Main Function
 int main()
-{	
+{
 	//Create an array of 20 media items for filling with data
 	//useing the global pointer we can use the item specified with 
 	mediaItems Items[20];
@@ -29,11 +36,12 @@ int main()
 	int itemNum = 0;
 	itemNum_ptr = &itemNum;
 
+	//use the imbue functionality to make the output look pretty
 	std::locale mylocal("");
 	locale = &mylocal;
 	std::cout.imbue(*locale);
-	
-	
+
+	//core program 
 	std::string menu_in;
 	print_menu();
 
@@ -46,6 +54,10 @@ int main()
 	std::cout << std::endl << "Goodbye" << std::endl;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Function Declarations
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Process Menu Function
 void process_menu_in(char inchar)
@@ -55,6 +67,7 @@ void process_menu_in(char inchar)
 
 	switch (toupper(inchar))
 	{
+
 	// Print all objects
 	case '*':
 	{
@@ -69,7 +82,7 @@ void process_menu_in(char inchar)
 		std::cout << std::endl << "===== All Items End =====" << std::endl;
 	}
 	break;
-	
+
 	//increase item number by 1
 	case '+':
 	{
@@ -107,7 +120,7 @@ void process_menu_in(char inchar)
 		int new_itemNum;
 		std::cout << "Enter new item number : ";
 		std::cin >> new_itemNum;
-		
+
 		//validate input
 		if ((new_itemNum >= 0) && (new_itemNum <= 19))
 		{
@@ -132,7 +145,7 @@ void process_menu_in(char inchar)
 
 	// display item menu option
 	case 'D':
-			Items_ptr[*itemNum_ptr].toCout(); 
+		Items_ptr[*itemNum_ptr].toCout();
 		break;
 
 	// enter item name menu option
@@ -140,7 +153,7 @@ void process_menu_in(char inchar)
 	{
 		std::string new_name;
 		std::cout << "Enter Media Item Title : ";
-		std::getline (std::cin, new_name);
+		std::getline(std::cin, new_name);
 		Items_ptr[*itemNum_ptr].setName(new_name);
 	}
 	break;
@@ -150,7 +163,7 @@ void process_menu_in(char inchar)
 	{
 		std::string new_author;
 		std::cout << "Enter Media Item Author : ";
-		std::getline (std::cin, new_author);
+		std::getline(std::cin, new_author);
 		Items_ptr[*itemNum_ptr].setAuthor(new_author);
 	}
 	break;
@@ -202,7 +215,7 @@ void process_menu_in(char inchar)
 	// display menu again menu option
 	case 'M':
 		print_menu();
-	break;
+		break;
 
 	// quit program menu option
 	case 'Q':
@@ -223,14 +236,14 @@ void print_menu()
 		<< "* - Display all media items data" << std::endl
 		<< "+//- increment // decrement the selecte item w/in the Array" << std::endl
 		<< "# - set the selected media item" << std::endl
-		<< "0 - Clear Media Item Data" << std::endl 
-		<< "D - Display Media Item Data" << std::endl 
-		<< "N - Set Media Item Name" << std::endl 
-		<< "A - Set Media Item Author" << std::endl 
+		<< "0 - Clear Media Item Data" << std::endl
+		<< "D - Display Media Item Data" << std::endl
+		<< "N - Set Media Item Name" << std::endl
+		<< "A - Set Media Item Author" << std::endl
 		<< "P - Set Media Item Pages" << std::endl
 		<< "I - set in print status" << std::endl
 		<< "V - set item Value//Price" << std::endl
 		<< "Y - set item Publication Year" << std::endl
-		<< "M - Print this Menu" << std::endl 
+		<< "M - Print this Menu" << std::endl
 		<< "Q - Quit this program" << std::endl << std::endl;
 }

@@ -1,7 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //
 // Media Item Class Implementation
 //
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Header Files
 #include <iostream>
 #include <string>
 #include "mediaItems.h"
@@ -17,7 +22,7 @@ mediaItems::mediaItems()
 	mediaItems::setInPrint(false);
 	in_print_def = true;
 
-	mediaItems::setPrice(0.00);	
+	mediaItems::setPrice(0.00);
 
 	mediaItems::setPubYear(1970);
 	pub_year_def = true;
@@ -27,6 +32,7 @@ mediaItems::mediaItems()
 
 
 // display all elements
+// display only elements with data in them; if no data in object then display empty
 void mediaItems::toCout()
 {
 	//if the hasData flag is not set the item is empty
@@ -50,14 +56,14 @@ void mediaItems::toCout()
 		{
 			std::cout << "      Author : " << author << std::endl;
 		}
-		
+
 		//display page count if present
 		if (pages == 0);
 		else if (pages != 0)
 		{
 			std::cout << "       Pages : " << pages << std::endl;
 		}
-		
+
 		//display price if set
 		if (price == 0.00);
 		else if (price != 0.00)
@@ -85,10 +91,6 @@ void mediaItems::toCout()
 		{
 			std::cout << "    Pub Year : " << pub_year << std::endl;
 		}
-		
-		/*std::cout << std::endl;*/
-		
-		//std::cout << "has data test: " << hasData << std::endl;
 	}
 }
 
@@ -119,7 +121,7 @@ void mediaItems::setPages(int new_pages)
 	{
 		std::cout << "Please enter a valid positive page number.";
 	}
-	
+
 }
 
 //set book in print status
@@ -142,7 +144,6 @@ void mediaItems::setPrice(double new_price)
 	{
 		std::cout << "Please enter a valid positive price.";
 	}
-	
 }
 
 // set the publication year - validates that the book was not published in a negative year
@@ -158,7 +159,6 @@ void mediaItems::setPubYear(int new_year)
 	{
 		std::cout << "Please enter a valid Year.";
 	}
-	
 }
 
 // set a modified flag
