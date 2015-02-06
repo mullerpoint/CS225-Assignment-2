@@ -11,11 +11,12 @@
 #include <locale>
 #include "mediaItems.h"
 
-//Gloabal Variables
+//Gloabal Variables and Defines
+#define OBJS 20
 bool done = false;
 
 mediaItems* Items_ptr;
-int* itemNum_ptr;
+int* ItemNum_ptr;
 
 std::locale* locale;
 
@@ -31,10 +32,10 @@ int main()
 {
 	//Create an array of 20 media items for filling with data
 	//useing the global pointer we can use the item specified with 
-	mediaItems Items[20];
+	mediaItems Items[OBJS];
 	Items_ptr = &Items[0];
 	int itemNum = 0;
-	itemNum_ptr = &itemNum;
+	ItemNum_ptr = &itemNum;
 
 	//use the imbue functionality to make the output look pretty
 	std::locale mylocal("");
@@ -47,7 +48,7 @@ int main()
 
 	while (!done)
 	{
-		std::cout << std::endl << "Menu [" << *itemNum_ptr << "]: ";
+		std::cout << std::endl << "Menu [" << *ItemNum_ptr << "]: ";
 		std::cin >> menu_in;
 		process_menu_in(menu_in[0]);
 	}
@@ -79,6 +80,7 @@ void process_menu_in(char inchar)
 			Items_ptr[count].toCout();
 			count++;
 		}
+		std::cout << std::endl << "Items in Memory:" << Items_ptr[0].in_mem << std::endl;
 		std::cout << std::endl << "===== All Items End =====" << std::endl;
 	}
 	break;
@@ -86,13 +88,13 @@ void process_menu_in(char inchar)
 	//increase item number by 1
 	case '+':
 	{
-		if (*itemNum_ptr < 19)
+		if (*ItemNum_ptr < 19)
 		{
-			*itemNum_ptr = *itemNum_ptr + 1;
+			*ItemNum_ptr = *ItemNum_ptr + 1;
 		}
-		else if (*itemNum_ptr >= 19)
+		else if (*ItemNum_ptr >= 19)
 		{
-			*itemNum_ptr = 19;
+			*ItemNum_ptr = 19;
 		}
 		std::cout << std::endl;
 	}
@@ -101,13 +103,13 @@ void process_menu_in(char inchar)
 	//decrease item number by 1
 	case '-':
 	{
-		if (*itemNum_ptr > 0)
+		if (*ItemNum_ptr > 0)
 		{
-			*itemNum_ptr = *itemNum_ptr - 1;
+			*ItemNum_ptr = *ItemNum_ptr - 1;
 		}
-		else if (*itemNum_ptr <= 0)
+		else if (*ItemNum_ptr <= 0)
 		{
-			*itemNum_ptr = 0;
+			*ItemNum_ptr = 0;
 		}
 		std::cout << std::endl;
 	}
@@ -124,7 +126,7 @@ void process_menu_in(char inchar)
 		//validate input
 		if ((new_itemNum >= 0) && (new_itemNum <= 19))
 		{
-			*itemNum_ptr = new_itemNum;
+			*ItemNum_ptr = new_itemNum;
 		}
 		else{
 			std::cout << "Please enter a valid number beteen 0-19";
@@ -139,22 +141,22 @@ void process_menu_in(char inchar)
 	// clear item menu option
 	case '0':
 	{
-		Items_ptr[*itemNum_ptr] = mediaItems();
+		Items_ptr[*ItemNum_ptr] = mediaItems();
 	}
 	break;
 
 	// display item menu option
 	case 'D':
-		Items_ptr[*itemNum_ptr].toCout();
+		Items_ptr[*ItemNum_ptr].toCout();
 		break;
 
-	// enter item name menu option
+		// enter item name menu option
 	case 'N':
 	{
 		std::string new_name;
 		std::cout << "Enter Media Item Title : ";
 		std::getline(std::cin, new_name);
-		Items_ptr[*itemNum_ptr].setName(new_name);
+		Items_ptr[*ItemNum_ptr].setName(new_name);
 	}
 	break;
 
@@ -164,7 +166,7 @@ void process_menu_in(char inchar)
 		std::string new_author;
 		std::cout << "Enter Media Item Author : ";
 		std::getline(std::cin, new_author);
-		Items_ptr[*itemNum_ptr].setAuthor(new_author);
+		Items_ptr[*ItemNum_ptr].setAuthor(new_author);
 	}
 	break;
 
@@ -174,7 +176,7 @@ void process_menu_in(char inchar)
 		int new_pages;
 		std::cout << "Enter Media Item Pages : ";
 		std::cin >> new_pages;
-		Items_ptr[*itemNum_ptr].setPages(new_pages);
+		Items_ptr[*ItemNum_ptr].setPages(new_pages);
 		std::cin.ignore(10000, '\n');
 	}
 	break;
@@ -186,7 +188,7 @@ void process_menu_in(char inchar)
 		std::cout << "Is the book still in print (0/1) : ";
 		std::cin >> printStatus;
 		std::cin.ignore(10000, '\n');
-		Items_ptr[*itemNum_ptr].setInPrint(printStatus);
+		Items_ptr[*ItemNum_ptr].setInPrint(printStatus);
 	}
 	break;
 
@@ -197,7 +199,7 @@ void process_menu_in(char inchar)
 		std::cout << "Enter Media Item value : ";
 		std::cin >> new_price;
 		std::cin.ignore(10000, '\n');
-		Items_ptr[*itemNum_ptr].setPrice(new_price);
+		Items_ptr[*ItemNum_ptr].setPrice(new_price);
 	}
 	break;
 
@@ -208,7 +210,7 @@ void process_menu_in(char inchar)
 		std::cout << "Enter Media Item publication year : ";
 		std::cin >> new_year;
 		std::cin.ignore(10000, '\n');
-		Items_ptr[*itemNum_ptr].setPubYear(new_year);
+		Items_ptr[*ItemNum_ptr].setPubYear(new_year);
 	}
 	break;
 

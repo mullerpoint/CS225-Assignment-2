@@ -11,6 +11,8 @@
 #include <string>
 #include "mediaItems.h"
 
+//initial items active
+int mediaItems::active = 0;
 
 //Constructor - set name/author blank, pages/price to 0, and inprint/pubyear to default = true
 mediaItems::mediaItems()
@@ -28,6 +30,8 @@ mediaItems::mediaItems()
 	pub_year_def = true;
 
 	mediaItems::modified(false);
+
+	active++;
 }
 
 
@@ -36,12 +40,12 @@ mediaItems::mediaItems()
 void mediaItems::toCout()
 {
 	//if the hasData flag is not set the item is empty
-	if (hasData == false)
+	if (isEmpty() == false)
 	{
 		std::cout << "This item is empty" << std::endl;
 	}
 	// if the has data flag is set the item has some data in it
-	else if (hasData == true)
+	else if (isEmpty() == true)
 	{
 		// display item name if present
 		if (name == "");
@@ -165,4 +169,19 @@ void mediaItems::setPubYear(int new_year)
 void mediaItems::modified(bool data)
 {
 	mediaItems::hasData = data;
+}
+
+bool mediaItems::isEmpty()
+{
+	return hasData;
+}
+
+mediaItems::~mediaItems()
+{
+	active--;
+}
+
+int mediaItems::in_mem()
+{
+	return active;
 }

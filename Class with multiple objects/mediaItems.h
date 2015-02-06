@@ -19,6 +19,7 @@ private:
 
 	bool hasData;
 
+	static int active;
 public:
 	void setName(std::string);
 	void setAuthor(std::string);
@@ -28,7 +29,10 @@ public:
 	void setPubYear(int);
 	void toCout();
 	void modified(bool);
+	bool isEmpty();
+	int in_mem();
 	mediaItems();
+	~mediaItems();
 };
 
 
