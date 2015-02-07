@@ -80,7 +80,8 @@ void process_menu_in(char inchar)
 			Items_ptr[count].toCout();
 			count++;
 		}
-		std::cout << std::endl << "Items in Memory:" << Items_ptr[0].in_mem << std::endl;
+
+		std::cout << std::endl << "Items in Memory:" << Items_ptr[0].in_mem() << std::endl;
 		std::cout << std::endl << "===== All Items End =====" << std::endl;
 	}
 	break;
